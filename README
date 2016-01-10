@@ -1,0 +1,145 @@
+
+
+:) Overview of KernelMemoryAnalyzer (KMA)
+
+KMA is an analyzer to analyze KernelMemory.
+The goal of KMA is as follows.
+
+	1. Read/Write/Trace Value for KernelMemory
+	2. Read/Write/Trace Metadata(PageTable) for KernelMemory
+	3. Support All architecture (ARM32, ARM64, Intel32, Intel64)
+	4. Provides API for Application and LKM developers.
+
+You can Read & Write & Trace function for KernelMemory.
+
+	ReadValue 	: Read KernelMemory
+	WriteValue	: Write value to KernelMemory
+	TraceValue	: Trace Value of KernelMemory.
+				  If a traced value is modified, you can get a notification.
+
+If you want to know usage, 
+See the "Usage of KernelMemoryAnalyzer Application" section in this page.
+
+and, 
+See the INSTALL file for installation instruction.
+See the HISTORY file to see history of KMA.
+
+
+
+:) Usage of KernelMemoryAnalyzer Application
+
+If you complete to build, 
+KernelMemoryAnalyzer Application (KernelMemoryAnalyzer) is in ./Build/
+
+Plase refer to INSTALL if you want to know how to build and install.
+
+After that, You can run KernelMemoryAnalyzer like this,
+
+	sudo ./KernelMemoryAnalyzer
+
+You can see usage of KernelMemoryAnalyzer Application by above command.
+
+Let me introduce a number of example.
+
+	1. read value
+
+	sh > sudo ./KernelMemoryAnalyzer ReadValue ffffffffc07b2048 4
+	Command : ReadValue
+	Addr : 0xffffffffc07b2048
+	Value : 
+	0x60, 0x60, 0x00, 0x00,
+
+	2. write value
+
+	sh > sudo ./KernelMemoryAnalyzer WriteValue ffffffffc07b2048 4 50500000
+	Command : WriteValue
+	Addr : 0xffffffffc07b2048
+	Value : 
+	0x50, 0x50, 0x00, 0x00,
+
+	3. read value after write
+
+	sh > sudo ./KernelMemoryAnalyzer ReadValue ffffffffc07b2048 4
+	Command : ReadValue
+	Addr : 0xffffffffc07b2048
+	Value : 
+	0x50, 0x50, 0x00, 0x00,
+
+	Value is Hexa.
+	But Byte-Ordering is not considered for printing Value.
+	
+	If type of value is unsigned int, for example,
+	unsigned int ui = 0x00007070; // address - ffffffffc08df048
+
+	You can get value as belows by ./KernelMemoryAnalyzer
+	Value :
+	0x70, 0x70, 0x00, 0x00,
+
+	4. TraceValue
+
+	sh > sudo ./KernelMemoryAnalyzer TraceValue ffffffffc07b2048 4
+	Command : TraceValue
+	Addr : 0xffffffffc07b2048
+
+	[... waiting ...]
+	[sh > sudo ./KernelMemoryAnalyzer WriteValue ffffffffc07b2048 4 40400000 (on other process)]
+
+	TraceCallback : 0xffffffffc07b2048, 4
+	Value : 
+	0x40, 0x40, 0x00, 0x00, 
+
+
+
+:) How to develop your own application with KernelMemoryAnalyzer
+
+Core functions of KernelMemoryAnalyzer are provided by dynamic library.
+
+So you can develop your own application.
+
+Please refer below files to develop your application.
+
+	./Common/KmaAPI.h : KernelMemoryAnalyzer APIs
+	./APP/Main.c       : KernelMemoryAnalyzer APP. You can refer it to how to use KmaAPI.h in your app.
+
+
+
+:) How to develop your LKM with KernelMemoryAnalyzer
+
+Core functions of KernelMemoryAnalyzer are provided by KMA LKM.
+
+Please refer below files to develop your LKM.
+
+	./Common/KmaAPI.h : KernelMemoryAnalyzer APIs
+	./LKM/Main.c 	  : KernelMemoryAnalyzer LKM. You can refer testFunc() to know how to use KmaAPI.
+
+
+
+:) Log
+
+Tag of KMA LKM is "KMA".
+You can see KMA LKM log by below command.
+
+	sh > dmesg | grep KMA
+
+
+
+:) FAQ
+
+See the FAQ file.
+
+
+
+:) BUGS
+
+If you discover a bug or you have a kind of request,
+Please send a mail.
+
+
+
+:) Author
+
+	email	: jinb.park7@gmail.com
+	github	: 
+	blog	: http://blog.daum.net/tlos6733
+			  (It's korean blog)
+
