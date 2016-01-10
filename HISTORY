@@ -1,0 +1,22 @@
+
+==================================================================================
+
+								KMA Ver 0.5
+
+==================================================================================
+
+- What have done in this version
+
+. Basic Structure for KMA APP & LKM
+. ReadValue
+. WriteValue
+. TraceValue
+
+- What have to do in next version
+
+. ReadMetadata, ReadAll
+. WriteMetadata, WriteAll
+. TraceMetadata, TraceAll
+. Check Permission
+. Do flushing cache for each architecture
+. TraceCancel

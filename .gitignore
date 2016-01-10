@@ -1,0 +1,4 @@
+KernelMemoryAnalyzer
+KernelMemoryAnalyzer.ko
+libKernelMemoryAnalyzer.so
+.*

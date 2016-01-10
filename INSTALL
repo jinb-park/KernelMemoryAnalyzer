@@ -1,0 +1,52 @@
+
+==================================================================================
+
+						How to Build
+
+==================================================================================
+
+You can run build.sh to build APP & LKM.
+But You should customize build.sh for your environment.
+You should set "ARCH", "CROSS_COMPILE", "KDIR" for target.
+
+APP & LKM that is built are saved in ./Build/
+
+Files in ./Build/ are as follows.
+
+- libKernelMemoryAnalyzer.so 
+: Dynamic library for basic functions of KernelMemoryAnalyzer
+
+- KernelMemoryAnalyzer 	   
+: Application that use libKernelMemoryAnalyzer.so
+
+- KernelMemoryAnalyzer.ko
+: Linux Kernel Module. You have to insmod this before run KernelMemoryAnalyzer
+
+
+==================================================================================
+
+						How to Install
+
+==================================================================================
+
+You can run install.sh to install dynamic library.
+install.sh just copy dynamic library to /usr/lib/
+
+
+==================================================================================
+
+						How to Run
+
+==================================================================================
+
+- step 0 (Build and Install)
+: ./build.sh
+: ./install.sh
+: cd Build/
+
+- step 1 (insmod LKM)
+: sudo insmod KernelMemoryAnalyzer.ko
+
+- step 2 (Run KernelMemoryAnalyzer Application)
+: sudo ./KernelMemoryAnalyzer
+

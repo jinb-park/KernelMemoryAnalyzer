@@ -1,6 +1,9 @@
 
+==================================================================================
 
-:) Overview of KernelMemoryAnalyzer (KMA)
+			Overview of KernelMemoryAnalyzer (KMA)
+
+==================================================================================
 
 KMA is an analyzer to analyze KernelMemory.
 The goal of KMA is as follows.
@@ -25,8 +28,11 @@ See the INSTALL file for installation instruction.
 See the HISTORY file to see history of KMA.
 
 
+==================================================================================
 
-:) Usage of KernelMemoryAnalyzer Application
+			Usage of KernelMemoryAnalyzer Application
+
+==================================================================================
 
 If you complete to build, 
 KernelMemoryAnalyzer Application (KernelMemoryAnalyzer) is in ./Build/
@@ -89,8 +95,11 @@ Let me introduce a number of example.
 	0x40, 0x40, 0x00, 0x00, 
 
 
+==================================================================================
 
-:) How to develop your own application with KernelMemoryAnalyzer
+	How to develop your own application with KernelMemoryAnalyzer
+
+==================================================================================
 
 Core functions of KernelMemoryAnalyzer are provided by dynamic library.
 
@@ -102,8 +111,11 @@ Please refer below files to develop your application.
 	./APP/Main.c       : KernelMemoryAnalyzer APP. You can refer it to how to use KmaAPI.h in your app.
 
 
+==================================================================================
 
-:) How to develop your LKM with KernelMemoryAnalyzer
+		How to develop your LKM with KernelMemoryAnalyzer
+
+==================================================================================
 
 Core functions of KernelMemoryAnalyzer are provided by KMA LKM.
 
@@ -113,8 +125,11 @@ Please refer below files to develop your LKM.
 	./LKM/Main.c 	  : KernelMemoryAnalyzer LKM. You can refer testFunc() to know how to use KmaAPI.
 
 
+==================================================================================
 
-:) Log
+							Log
+
+==================================================================================
 
 Tag of KMA LKM is "KMA".
 You can see KMA LKM log by below command.
@@ -122,24 +137,32 @@ You can see KMA LKM log by below command.
 	sh > dmesg | grep KMA
 
 
+==================================================================================
 
-:) FAQ
+							FAQ
+
+==================================================================================
 
 See the FAQ file.
 
 
+==================================================================================
 
-:) BUGS
+							BUGS
+
+==================================================================================
 
 If you discover a bug or you have a kind of request,
 Please send a mail.
 
 
+==================================================================================
 
-:) Author
+							Author
+
+==================================================================================
 
 	email	: jinb.park7@gmail.com
-	github	: 
-	blog	: http://blog.daum.net/tlos6733
-			  (It's korean blog)
+	github	: https://github.com/jinb-park/KernelMemoryAnalyzer
+	blog	: http://blog.daum.net/tlos6733 (It's korean blog)
 
